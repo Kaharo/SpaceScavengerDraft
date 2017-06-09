@@ -3,24 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class testMovingCubes : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
 
-    //public Vector3 direction = new Vector3(10, 10, 0);
     public Transform endOrbitTarget;
     public Transform startOrbitTarget;
 
     public float speed = 0.1f;
+
     private Vector3 target;
 
-    public GameObject grandChild;
-
-    public Transform trtarget;
 
 
     void Start()
     {
-        //target = transform.position;
         transform.position = startOrbitTarget.position;
     }
 
