@@ -5,7 +5,7 @@ using UnityEngine;
 public class Orbits : MonoBehaviour {
     
     
-    public List<GameObject> orbits = new List<GameObject>();
+    public List<Orbit> orbits = new List<Orbit>();
 
     // Use this for initialization
     void Start () {
@@ -19,7 +19,7 @@ public class Orbits : MonoBehaviour {
             int numberofChilds = transform.childCount;
             for (int i = 0; i < numberofChilds; i++)
             {
-                orbits.Add(transform.GetChild(i).gameObject);
+                orbits.Add(transform.GetChild(i).GetComponent<Orbit>());
             }
         }
         catch

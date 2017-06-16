@@ -6,24 +6,20 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
-    //Player's start and end point
-    [Header("Transsdorms")]
-    public Transform endOrbitTarget;
-    public Transform startOrbitTarget;
-
+    [Header("Transforms")]
     [SerializeField]
     private int orbitIndex;
-    public Orbits orbit;
+    public Orbits orbits;
+    private Orbit currentOrbit;
 
     //Speed of player toward the end point
     public float speed = 0.1f;
     
     void Start()
     {
-        transform.position = startOrbitTarget.position;
         orbitIndex = 0;
-        startOrbitTarget = orbit.orbits[0].transform.Find("start").transform;
-        endOrbitTarget = orbit.orbits[0].transform.Find("end").transform;
+        currentOrbit = orbits.orbits[0];
+        transform.position = currentOrbit.startTarget.position;
     }
 
 
@@ -55,8 +51,8 @@ public class PlayerController : MonoBehaviour
         try
         {
            
-            transform.position = Vector3.MoveTowards(transform.position, endOrbitTarget.position, speed * Time.deltaTime);
-            if (Vector3.Distance(transform.position, endOrbitTarget.position) <= 0)
+            transform.position = Vector3.MoveTowards(transform.position, currentOrbit.endTarget.position, speed * Time.deltaTime);
+            if (Vector3.Distance(transform.position, currentOrbit.endTarget.position) <= 0)
             {
                 changeOrbit();
             }
@@ -74,15 +70,14 @@ public class PlayerController : MonoBehaviour
         try
         {
             orbitIndex++;
-            if (orbitIndex > orbit.orbits.Count)
+            if (orbitIndex > orbits.orbits.Count)
             {
                 // Game Over
                 orbitIndex = 0;
             }
-
-            startOrbitTarget = orbit.orbits[orbitIndex].transform.Find("start").transform;
-            endOrbitTarget = orbit.orbits[orbitIndex].transform.Find("end").transform;
-            transform.position = startOrbitTarget.position;
+            
+            currentOrbit = orbits.orbits[orbitIndex];
+            transform.position = currentOrbit.startTarget.position;
         }
         catch
         {
