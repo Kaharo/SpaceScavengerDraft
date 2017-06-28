@@ -8,6 +8,8 @@ public class RaycastShooting : MonoBehaviour {
     public float weaponRange = 50f;
     public Transform gunEnd;
 
+    public float gunForce;
+
     private Camera fpsCam;
     private WaitForSeconds shotDuration =new WaitForSeconds(.07f);
     private LineRenderer laserLine;
@@ -21,7 +23,7 @@ public class RaycastShooting : MonoBehaviour {
 	void Update () {
         try
         {
-            if (Input.GetButtonDown("Fire1") && Time.time > nextFire)
+            if (Input.GetButton("Fire1") && Time.time > nextFire)
             {
                 nextFire = Time.time + fireRate;
 
@@ -33,8 +35,13 @@ public class RaycastShooting : MonoBehaviour {
                 Debug.DrawRay(rayOrigin, gunEnd.up * 100, Color.red);
                 if (Physics.Raycast(rayOrigin, gunEnd.up, out hit, weaponRange))
                 {
-                    Debug.Log(hit.transform.gameObject.name);
+                    //Debug.Log(hit.transform.gameObject.name);
                     laserLine.SetPosition(1, hit.point);
+                    if (hit.transform.gameObject.tag.Equals("Obstacle"))
+                    {
+                        Obstacles obstacle = hit.transform.GetComponent<Obstacles>();
+                        obstacle.Force((transform.position - obstacle.transform.position).normalized * gunForce);
+                    }
                 }
                 else
                 {

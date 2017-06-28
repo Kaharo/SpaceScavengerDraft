@@ -16,6 +16,18 @@ public class Obstacles : MonoBehaviour {
         rigidbody = GetComponent<Rigidbody>();
 
         Vector2 dir = new Vector2(direction.position.x, direction.position.y);
-        rigidbody.AddForce(dir.normalized * speed);
-	}
+        //rigidbody.AddForce(dir.normalized * speed);
+        Force(dir.normalized * speed);
+
+    }
+
+    public void Force(Vector3 dir)
+    {
+        rigidbody.AddForce(dir);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        
+    }
 }
