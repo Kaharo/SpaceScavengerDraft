@@ -26,8 +26,6 @@ public class Obstacles : MonoBehaviour {
         rigidbody.AddForce(dir);
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        
-    }
+    
+
 }

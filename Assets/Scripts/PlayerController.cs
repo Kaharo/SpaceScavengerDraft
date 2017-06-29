@@ -83,7 +83,21 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Player Controller Move (by orbit) error ");
         }
+    }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        try
+        {
+            if (collision.gameObject.CompareTag("Obstacle"))
+            {
+                Destroy(collision.gameObject);
+            }
+        }
+        catch
+        {
+            Debug.Log("On collision Enter error");
+        }
     }
 
 }

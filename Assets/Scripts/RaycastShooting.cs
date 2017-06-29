@@ -38,6 +38,7 @@ public class RaycastShooting : MonoBehaviour {
                     //Debug.Log(hit.transform.gameObject.name);
                     laserLine.SetPosition(1, hit.point);
                     if (hit.transform.gameObject.tag.Equals("Obstacle"))
+                    //if (hit.transform.gameObject.CompareTag.Equals("Obstacle"))
                     {
                         Obstacles obstacle = hit.transform.GetComponent<Obstacles>();
                         obstacle.Force((transform.position - obstacle.transform.position).normalized * gunForce);
