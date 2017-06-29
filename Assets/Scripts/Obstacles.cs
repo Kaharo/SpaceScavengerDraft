@@ -26,6 +26,4 @@ public class Obstacles : MonoBehaviour {
         rigidbody.AddForce(dir);
     }
 
-    
-
 }

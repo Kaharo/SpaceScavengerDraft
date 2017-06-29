@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 26e5db78ed34c0f46a73560f9ebd855b
+timeCreated: 1498714470
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Motorwerk
+  fontNames:
+  - Motorwerk
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

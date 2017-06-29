@@ -14,6 +14,10 @@ public class PlayerController : MonoBehaviour
 
     //Speed of player toward the end point
     public float speed = 0.1f;
+
+    public ScoreManager scoreManager;
+    public UIManager uiManager;
+    
     
     void Start()
     {
@@ -92,6 +96,11 @@ public class PlayerController : MonoBehaviour
             if (collision.gameObject.CompareTag("Obstacle"))
             {
                 Destroy(collision.gameObject);
+                scoreManager.AddScore();
+                if (scoreManager.score == 3)
+                {
+                    uiManager.SetActive(true);
+                }
             }
         }
         catch
